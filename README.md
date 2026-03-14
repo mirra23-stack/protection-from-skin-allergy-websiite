@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIRRA | Your Skin's Bestie</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <title>RadM | Your Skin's Bestie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&link=swap" rel="stylesheet">
     <style>
         :root {
             --green-main: #4CAF50; /* Fresh Leaf Green */
@@ -18,7 +18,6 @@
             margin: 0;
             font-family: 'Quicksand', sans-serif;
             background-color: #f9fbf9;
-            /* Dotted background in fresh green */
             background-image: radial-gradient(var(--green-border) 0.5px, transparent 0.5px);
             background-size: 20px 20px; 
             display: flex;
@@ -34,13 +33,11 @@
             max-width: 450px;
             padding: 40px;
             border-radius: 40px;
-            /* Soft green glow */
             box-shadow: 0 15px 35px rgba(76, 175, 80, 0.15);
             text-align: center;
             transition: all 0.5s ease;
         }
 
-        /* Hidden class for page transitions */
         .hidden { display: none; }
 
         h1 { font-family: 'Pacifico', cursive; color: var(--green-main); font-size: 2.5rem; margin-bottom: 10px; }
@@ -88,7 +85,6 @@
 
         .checkbox-item { font-size: 0.85rem; display: flex; align-items: center; gap: 5px; }
 
-        /* Dashboard Styles */
         .stat-card {
             background: var(--green-light);
             padding: 20px;
@@ -103,7 +99,7 @@
 <body>
 
     <div id="page-login" class="container">
-        <h1>Welcome Back 🌿</h1>
+        <h1>RadM 🌿</h1>
         <p>Log in to check your environment (and your glow!).</p>
         <input type="text" placeholder="Username" id="user">
         <input type="password" placeholder="Password">
@@ -135,7 +131,7 @@
     </div>
 
     <div id="page-result" class="container hidden">
-        <h1>MIRRA Report</h1>
+        <h1>RadM Report</h1>
         <p id="greeting">Hey Gorgeous!</p>
         
         <div class="stat-card">
@@ -161,9 +157,7 @@
 
     <script>
         function showPage(pageId) {
-            // Hide all containers
             document.querySelectorAll('.container').forEach(div => div.classList.add('hidden'));
-            // Show requested container
             document.getElementById(pageId).classList.remove('hidden');
         }
 
@@ -171,7 +165,6 @@
             const name = document.getElementById('nameInput').value || "Gorgeous";
             document.getElementById('greeting').innerText = `Hey ${name}! ✨`;
             
-            // Updated advice logic to match the green theme
             const advice = "The air in Malayambakkam is a bit dusty today. Since you have sensitive skin, please wear your SPF 50 and a fresh green mask! It's safe to go out, but stay in the shade! 🌿";
             document.getElementById('final-advice').innerText = advice;
 
