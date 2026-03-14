@@ -7,18 +7,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --pink-main: #ff527b;
-            --pink-light: #ffebf0;
-            --pink-border: #f8bbd0;
-            --text-dark: #5c4b51;
+            --green-main: #4CAF50; /* Fresh Leaf Green */
+            --green-light: #f1f8e9; /* Soft Mint background for cards */
+            --green-border: #c8e6c9;
+            --text-dark: #2e4d30; /* Dark Forest Green for text */
+            --accent-yellow: #ffa000; /* For UV warnings */
         }
 
         body {
             margin: 0;
             font-family: 'Quicksand', sans-serif;
-            background-color: #fff0f5;
-            background-image: radial-gradient(#ffc1d1 0.5px, transparent 0.5px);
-            background-size: 20px 20px; /* Matching the dotted background in your image */
+            background-color: #f9fbf9;
+            /* Dotted background in fresh green */
+            background-image: radial-gradient(var(--green-border) 0.5px, transparent 0.5px);
+            background-size: 20px 20px; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -32,7 +34,8 @@
             max-width: 450px;
             padding: 40px;
             border-radius: 40px;
-            box-shadow: 0 15px 35px rgba(255, 182, 193, 0.4);
+            /* Soft green glow */
+            box-shadow: 0 15px 35px rgba(76, 175, 80, 0.15);
             text-align: center;
             transition: all 0.5s ease;
         }
@@ -40,22 +43,27 @@
         /* Hidden class for page transitions */
         .hidden { display: none; }
 
-        h1 { font-family: 'Pacifico', cursive; color: var(--pink-main); font-size: 2.5rem; margin-bottom: 10px; }
-        h2 { color: var(--pink-main); margin-bottom: 20px; }
+        h1 { font-family: 'Pacifico', cursive; color: var(--green-main); font-size: 2.5rem; margin-bottom: 10px; }
+        h2 { color: var(--green-main); margin-bottom: 20px; }
         
         input, select {
             width: 100%;
             padding: 15px;
             margin: 10px 0;
-            border: 1px solid var(--pink-border);
+            border: 1px solid var(--green-border);
             border-radius: 15px;
             box-sizing: border-box;
             outline: none;
             font-family: inherit;
+            background-color: #fff;
+        }
+
+        input:focus {
+            border-color: var(--green-main);
         }
 
         .btn {
-            background: var(--pink-main);
+            background: var(--green-main);
             color: white;
             border: none;
             padding: 15px 30px;
@@ -65,10 +73,10 @@
             cursor: pointer;
             width: 100%;
             margin-top: 20px;
-            transition: transform 0.2s;
+            transition: transform 0.2s, background 0.3s;
         }
 
-        .btn:hover { transform: scale(1.02); background: #ff3b6b; }
+        .btn:hover { transform: scale(1.02); background: #388E3C; }
 
         .allergy-options {
             text-align: left;
@@ -82,24 +90,25 @@
 
         /* Dashboard Styles */
         .stat-card {
-            background: var(--pink-light);
+            background: var(--green-light);
             padding: 20px;
             border-radius: 20px;
             margin: 15px 0;
+            border: 1px solid var(--green-border);
         }
-        .aqi-val { font-size: 3rem; font-weight: bold; color: var(--pink-main); }
-        .warning-text { font-style: italic; color: #ad1457; margin-top: 15px; }
+        .aqi-val { font-size: 3rem; font-weight: bold; color: var(--green-main); }
+        .warning-text { font-style: italic; color: #1b5e20; margin-top: 15px; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <div id="page-login" class="container">
-        <h1>Welcome Back 💖</h1>
-        <p>Log in to check your man (and your air!).</p>
+        <h1>Welcome Back 🌿</h1>
+        <p>Log in to check your environment (and your glow!).</p>
         <input type="text" placeholder="Username" id="user">
         <input type="password" placeholder="Password">
         <button class="btn" onclick="showPage('page-details')">Login</button>
-        <p style="font-size: 0.8rem; margin-top: 20px;">Don't have an account? <span style="color:var(--pink-main); font-weight:bold;">Sign Up</span></p>
+        <p style="font-size: 0.8rem; margin-top: 20px;">Don't have an account? <span style="color:var(--green-main); font-weight:bold; cursor:pointer;">Sign Up</span></p>
     </div>
 
     <div id="page-details" class="container hidden">
@@ -111,7 +120,7 @@
         </div>
         <input type="text" placeholder="Place of Birth">
         
-        <p style="text-align: left; font-weight: 600; margin-bottom: 5px; color: var(--pink-main);">Skin Allergies:</p>
+        <p style="text-align: left; font-weight: 600; margin-bottom: 5px; color: var(--green-main);">Skin Allergies:</p>
         <div class="allergy-options">
             <label class="checkbox-item"><input type="checkbox"> Eczema</label>
             <label class="checkbox-item"><input type="checkbox"> Hives</label>
@@ -122,7 +131,7 @@
         </div>
         <input type="text" placeholder="Other (please specify)...">
         
-        <button class="btn" onclick="generateReport()">Analyze My Environment 🎀</button>
+        <button class="btn" onclick="generateReport()">Analyze My Environment 🌿</button>
     </div>
 
     <div id="page-result" class="container hidden">
@@ -137,15 +146,15 @@
 
         <div class="stat-card" style="background: #fff9e6; border: 1px solid #ffe082;">
             <p>Sun & UV Radiation</p>
-            <div class="aqi-val" style="color: #ffa000;">8.2</div>
+            <div class="aqi-val" style="color: var(--accent-yellow);">8.2</div>
             <p style="color: #795548;">High UV Exposure</p>
         </div>
 
         <div class="warning-text">
-            ⚠️ Alert: There is a <strong>30% chance</strong> of a sun allergy flare-up today in your location.
+            ⚠️ <strong>Alert:</strong> There is a 30% chance of a sun allergy flare-up today in your location.
         </div>
 
-        <p id="final-advice" style="margin-top: 20px; font-weight: 600;"></p>
+        <p id="final-advice" style="margin-top: 20px; font-weight: 600; font-size: 0.95rem; line-height: 1.4;"></p>
         
         <button class="btn" onclick="showPage('page-login')">Back to Home 🏠</button>
     </div>
@@ -162,8 +171,8 @@
             const name = document.getElementById('nameInput').value || "Gorgeous";
             document.getElementById('greeting').innerText = `Hey ${name}! ✨`;
             
-            // Logic for advice
-            const advice = "The air in Malayambakkam is a bit dusty today. Since you have sensitive skin, please wear your SPF 50 and a cute pink mask! It's safe to go out, but stay in the shade! 🌸";
+            // Updated advice logic to match the green theme
+            const advice = "The air in Malayambakkam is a bit dusty today. Since you have sensitive skin, please wear your SPF 50 and a fresh green mask! It's safe to go out, but stay in the shade! 🌿";
             document.getElementById('final-advice').innerText = advice;
 
             showPage('page-result');
